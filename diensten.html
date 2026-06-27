@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root{--black:#0a0a0a;--dark:#111111;--card:#161616;--border:#1e1e1e;--green:#069633;--white:#f0f0f0;--grey:#888888;--font-display:"Montserrat",sans-serif;--font-body:"Poppins",sans-serif}
+    *,*::before,*::as{box-sizing:border-box;margin:0;padding:0}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     body{background:var(--black);color:var(--white);font-family:var(--font-body);font-weight:300;line-height:1.6;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
@@ -28,12 +29,15 @@
     .diensten-section{padding:5rem 4rem}
     .diensten-section > p{color:var(--grey);font-size:.95rem;max-width:580px;margin-bottom:3rem}
     .diensten-full{display:flex;flex-direction:column;border:1px solid var(--border)}
-    .dienst-full{display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--border);transition:background .25s;position:relative;overflow:hidden}
+    .dienst-full{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border);transition:background .25s;position:relative;overflow:hidden}
     .dienst-full:last-child{border-bottom:none}
     .dienst-full:hover{background:var(--card)}
-    .dienst-full::after{content:"";position:absolute;left:0;top:0;width:3px;height:0;background:var(--green);transition:height .35s}
+    .dienst-full::after{content:"";position:absolute;left:0;top:0;width:3px;height:0;background:var(--green);transition:height .35s;z-index:2}
     .dienst-full:hover::after{height:100%}
-
+    .dienst-img{width:260px;min-height:220px;overflow:hidden;flex-shrink:0}
+    .dienst-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8);transition:transform .4s,filter .4s}
+    .dienst-full:hover .dienst-img img{transform:scale(1.04);filter:brightness(.95)}
+    .dienst-body{padding:2.5rem}
     .dienst-body h2{font-family:var(--font-display);font-size:1.4rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.7rem}
     .dienst-body p{color:var(--grey);font-size:.92rem;line-height:1.8;max-width:640px}
     .dienst-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
@@ -43,9 +47,12 @@
     .cta-banner p{color:var(--grey);max-width:480px;margin:0 auto 2rem;font-size:.95rem}
     .btn-primary{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;background:var(--green);color:#fff;border:none;cursor:pointer;transition:background .2s,transform .15s;border-radius:6px}
     .btn-primary:hover{background:#07b33d;transform:translateY(-2px)}
-    
-    
-    
+    footer{background:var(--dark);border-top:1px solid var(--border);padding:2.2rem 4rem;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:1rem}
+    .footer-logo img{height:40px;background:transparent}
+    .footer-center{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em;text-align:center}
+    .footer-right{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em;text-align:right}
+    .footer-bottom{background:var(--dark);border-top:1px solid var(--border);padding:.9rem 4rem;text-align:center}
+    .footer-bottom p{font-size:.7rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.06em}
     @media(max-width:900px){
       nav{padding:1rem 1.5rem}
       .nav-links,.nav-cta{display:none}
@@ -53,17 +60,15 @@
       .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,10,10,.98);align-items:center;justify-content:center;gap:2.5rem;font-size:1.1rem;z-index:100}
       .page-header{padding:7rem 1.5rem 3rem}
       .diensten-section{padding:3.5rem 1.5rem}
-      .dienst-full{grid-template-columns:1fr}.dienst-img{width:100%;min-height:180px}.dienst-body{padding:2rem 1.5rem}
+      .dienst-full{grid-template-columns:1fr}
+      .dienst-img{width:100%;min-height:180px}
+      .dienst-body{padding:2rem 1.5rem}
       .cta-banner{padding:4rem 1.5rem}
-      footer{grid-template-columns:1fr;text-align:left}.footer-center{text-align:left}.footer-right{text-align:left}.footer-bottom{padding:.9rem 1.5rem}
+      footer{grid-template-columns:1fr;text-align:left}
+      .footer-center{text-align:left}
+      .footer-right{text-align:left}
+      .footer-bottom{padding:.9rem 1.5rem}
     }
-
-    footer{background:var(--dark);border-top:1px solid var(--border);padding:2.2rem 4rem;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:1rem}
-    .footer-logo img{height:40px;background:transparent}
-    .footer-center{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em;text-align:center}
-    .footer-right{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em;text-align:right}
-    .footer-bottom{background:var(--dark);border-top:1px solid var(--border);padding:.9rem 4rem;text-align:center}
-    .footer-bottom p{font-size:.7rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.06em}
   </style>
 </head>
 <body>
@@ -92,10 +97,9 @@
 
     <div class="dienst-full">
       <div class="dienst-img"><img src="social-media.jpg" alt="Social Media Content" /></div>
-      <div class="dienst-img"><img src="social-media.jpg" alt="Social Media" /></div>
       <div class="dienst-body">
         <h2>Social Media Content</h2>
-        <p>Korte en pakkende video's specifiek gemaakt voor Instagram, LinkedIn, TikTok, YouTube en andere platformen. Elke video wordt geoptimaliseerd voor het algoritme en uw doelgroep, met de juiste formats, muziek en editing stijl.</p>
+        <p>Korte en pakkende video\'s specifiek gemaakt voor Instagram, LinkedIn, TikTok, YouTube en andere platformen. Elke video wordt geoptimaliseerd voor het algoritme en uw doelgroep, met de juiste formats, muziek en editing stijl.</p>
         <div class="dienst-tags"><span class="dienst-tag">Reels</span><span class="dienst-tag">TikTok</span><span class="dienst-tag">LinkedIn</span><span class="dienst-tag">YouTube Shorts</span><span class="dienst-tag">Stories</span></div>
       </div>
     </div>
@@ -110,21 +114,19 @@
     </div>
 
     <div class="dienst-full">
-      <div class="dienst-img"><img src="aftermovie.jpg" alt="Evenementen" /></div>
-      <div class="dienst-img"><img src="aftermovie.jpg" alt="Aftermovie" /></div>
+      <div class="dienst-img"><img src="aftermovie.jpg" alt="Evenementen en Aftermovies" /></div>
       <div class="dienst-body">
         <h2>Evenementen &amp; Aftermovies</h2>
-        <p>Of het nu gaat om een zakelijk evenement, festival of sporttoernooi, iedere bijzondere dag verdient een meeslepende aftermovie. Met meerdere camera's en een scherp gevoel voor sfeer leggen wij de essentie van uw evenement vast.</p>
-        <div class="dienst-tags"><span class="dienst-tag">Festivals</span><span class="dienst-tag">Bedrijfsevenementen</span><span class="dienst-tag">Sport</span><span class="dienst-tag">Privé-evenementen</span></div>
+        <p>Of het nu gaat om een zakelijk evenement, festival of sporttoernooi, iedere bijzondere dag verdient een meeslepende aftermovie. Met meerdere camera\'s en een scherp gevoel voor sfeer leggen wij de essentie van uw evenement vast.</p>
+        <div class="dienst-tags"><span class="dienst-tag">Festivals</span><span class="dienst-tag">Bedrijfsevenementen</span><span class="dienst-tag">Sport</span><span class="dienst-tag">Priv&eacute;-evenementen</span></div>
       </div>
     </div>
 
     <div class="dienst-full">
       <div class="dienst-img"><img src="bedrijfsfilm.jpg" alt="Bedrijfsfilms" /></div>
-      <div class="dienst-img"><img src="bedrijfsfilm.jpg" alt="Bedrijfsfilm" /></div>
       <div class="dienst-body">
         <h2>Bedrijfsfilms</h2>
-        <p>Introduceer uw bedrijf, team of werkwijze met een strak en professioneel productiepakket. Ideaal voor u website, LinkedIn of presentaties. Een goede bedrijfsfilm geeft vertrouwen en maakt direct duidelijk wie u zijn.</p>
+        <p>Introduceer uw bedrijf, team of werkwijze met een strak en professioneel productiepakket. Ideaal voor uw website, LinkedIn of presentaties. Een goede bedrijfsfilm geeft vertrouwen en maakt direct duidelijk wie u bent.</p>
         <div class="dienst-tags"><span class="dienst-tag">Introductiefilm</span><span class="dienst-tag">Teamfilm</span><span class="dienst-tag">Recruitmentfilm</span><span class="dienst-tag">Productfilm</span></div>
       </div>
     </div>
@@ -133,7 +135,7 @@
       <div class="dienst-img"><img src="maatwerk.jpg" alt="Maatwerk" /></div>
       <div class="dienst-body">
         <h2>Maatwerk</h2>
-        <p>Heb u iets speciaals nodig dat hier niet tussen staat? Neem vrijblijvend contact op. Of het nu gaat om drone-opnames of iets heel anders, wij denken graag met u mee.</p>
+        <p>Heeft u iets speciaals nodig dat hier niet tussen staat? Neem vrijblijvend contact op. Of het nu gaat om drone-opnames of iets heel anders, wij denken graag met u mee.</p>
         <div class="dienst-tags"><span class="dienst-tag">Drone-opnames</span><span class="dienst-tag">Op aanvraag</span></div>
       </div>
     </div>
