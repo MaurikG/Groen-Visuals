@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Groen Visuals – Videoproductie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--black:#0a0a0a;--dark:#111111;--card:#161616;--border:#1e1e1e;--green:#069633;--white:#f0f0f0;--grey:#888888;--font-display:'Montserrat',sans-serif;--font-body:'Poppins',sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--black);color:var(--white);font-family:var(--font-body);font-weight:300;line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    ul{list-style:none}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+    nav.scrolled{background:rgba(10,10,10,.95);border-bottom-color:var(--border)}
+    .nav-logo img{height:44px;background:transparent}
+    .nav-links{display:flex;gap:2.5rem;font-family:var(--font-display);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}
+    .nav-links a{color:var(--grey);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--green)}
+    .nav-cta{font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:.55rem 1.5rem;border:1.5px solid var(--green);color:var(--green);transition:background .2s,color .2s}
+    .nav-cta:hover{background:var(--green);color:#fff}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101}
+    .burger span{display:block;width:24px;height:2px;background:var(--white)}
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding:8rem 2rem 5rem}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(6,150,51,.13) 0%,transparent 70%)}
+    .shutter-deco{position:absolute;width:650px;height:650px;border-radius:50%;border:1px solid rgba(6,150,51,.07);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulseRing 7s ease-in-out infinite;pointer-events:none}
+    .shutter-deco::before{content:'';position:absolute;inset:70px;border-radius:50%;border:1px solid rgba(6,150,51,.05);animation:pulseRing 7s ease-in-out 1.5s infinite}
+    @keyframes pulseRing{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.04)}}
+    .hero-content{position:relative;z-index:2}
+    .hero-eyebrow{font-family:var(--font-display);font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;color:var(--green);margin-bottom:1.4rem}
+    .hero-title{font-family:var(--font-display);font-size:clamp(3rem,9vw,7.5rem);font-weight:900;line-height:.95;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:1.8rem}
+    .hero-title span{color:var(--green)}
+    .hero-sub{font-size:clamp(.95rem,1.8vw,1.1rem);font-weight:300;color:var(--grey);max-width:520px;margin:0 auto 2.5rem}
+    .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-primary{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;background:var(--green);color:#fff;border:none;cursor:pointer;transition:background .2s,transform .15s;border-radius:6px}
+    .btn-primary:hover{background:#07b33d;transform:translateY(-2px)}
+    .btn-outline{display:inline-block;font-family:var(--font-display);font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;border:1.5px solid var(--grey);color:var(--grey);transition:border-color .2s,color .2s;border-radius:6px}
+    .btn-outline:hover{border-color:var(--white);color:var(--white)}
+    .hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-family:var(--font-display);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--grey);animation:bounce 2.2s ease-in-out infinite}
+    .hero-scroll::after{content:'';display:block;width:1px;height:36px;background:linear-gradient(to bottom,var(--grey),transparent)}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+    .intro-strip{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+    .intro-stat-num{font-family:var(--font-display);font-size:2.6rem;font-weight:900;color:var(--green)}
+    .intro-stat-label{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem}
+    section.content{padding:5.5rem 4rem}
+    section.content.dark-bg{background:var(--dark)}
+    .section-label{font-family:var(--font-display);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
+    .section-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;text-transform:uppercase;line-height:1;margin-bottom:.8rem}
+    .divider{width:44px;height:3px;background:var(--green);margin-bottom:1.4rem}
+    .section-sub{color:var(--grey);max-width:560px;font-size:.92rem}
+    .diensten-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:3rem;border:1px solid var(--border)}
+    .dienst-card{padding:2.4rem 1.8rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background .25s;position:relative;overflow:hidden}
+    .dienst-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--green);transition:width .3s}
+    .dienst-card:hover{background:var(--card)}
+    .dienst-card:hover::after{width:100%}
+    .dienst-icon{width:40px;height:40px;margin-bottom:1.2rem;color:var(--green)}
+    .dienst-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.5rem}
+    .dienst-card p{color:var(--grey);font-size:.87rem;line-height:1.7}
+    .section-cta{margin-top:2.5rem;text-align:center}
+    .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem}
+    .portfolio-item{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--card);cursor:pointer}
+    .portfolio-item.wide{grid-column:span 2}
+    .portfolio-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--card) 0%,#1a1a1a 100%);transition:transform .4s}
+    .portfolio-item:hover .portfolio-placeholder{transform:scale(1.04)}
+    .play-icon{width:50px;height:50px;border-radius:50%;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s}
+    .portfolio-item:hover .play-icon{border-color:var(--green);background:rgba(6,150,51,.2)}
+    .portfolio-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1.4rem}
+    .portfolio-item:hover .portfolio-overlay{opacity:1}
+    .portfolio-info h3{font-family:var(--font-display);font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.04em}
+    .portfolio-info span{font-size:.68rem;color:var(--green);font-family:var(--font-display);letter-spacing:.12em;text-transform:uppercase}
+    .portfolio-tag{position:absolute;top:.9rem;left:.9rem;font-family:var(--font-display);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:.28rem .75rem;background:rgba(6,150,51,.9);color:#fff}
+    
+    
+    
+
+    .diensten-cta-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-bottom:2.5rem}
+    .dienst-pill{display:flex;align-items:center;gap:.6rem;font-family:var(--font-display);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.65rem 1.4rem;border:1px solid var(--border);color:var(--grey);border-radius:999px;transition:border-color .2s,color .2s}
+    .dienst-pill:hover{border-color:var(--green);color:var(--green)}
+    .dienst-pill svg{color:var(--green)}
+    .btn-green-big{display:inline-block;font-family:var(--font-display);font-weight:800;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;padding:1rem 3rem;background:var(--green);color:#fff;border-radius:8px;transition:background .2s,transform .15s;border:none;cursor:pointer}
+    .btn-green-big:hover{background:#07b33d;transform:translateY(-2px)}
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem}
+      .nav-links,.nav-cta{display:none}
+      .burger{display:flex}
+      .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,10,10,.98);align-items:center;justify-content:center;gap:2.5rem;font-size:1.1rem;z-index:100}
+      .mob-cta{display:block!important}
+      .intro-strip{grid-template-columns:1fr;padding:2.5rem 1.5rem}
+      section.content{padding:4rem 1.5rem}
+      .diensten-grid{grid-template-columns:1fr}
+      .portfolio-grid{grid-template-columns:1fr}
+      .portfolio-item.wide{grid-column:span 1}
+      footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
+    }
+
+    footer{background:var(--dark);border-top:1px solid var(--border);padding:2.2rem 4rem;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:1rem}
+    .footer-logo img{height:40px;background:transparent}
+    .footer-center{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em;text-align:center}
+    .footer-right{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em;text-align:right}
+    .footer-bottom{background:var(--dark);border-top:1px solid var(--border);padding:.9rem 4rem;text-align:center}
+    .footer-bottom p{font-size:.7rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.06em}
+
+    .werk-preview{padding:5.5rem 4rem;background:var(--dark)}
+    .werk-preview-inner{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:2rem;align-items:center;margin-top:3rem}
+    .werk-preview-img{overflow:hidden;border:1px solid var(--border)}
+    .werk-preview-img img{width:100%;height:280px;object-fit:cover;filter:brightness(.8);transition:transform .4s,filter .3s;display:block}
+    .werk-preview-img:hover img{transform:scale(1.04);filter:brightness(1)}
+    .werk-preview-text{text-align:center;padding:0 1rem}
+    .werk-preview-text .section-label{margin-bottom:.6rem}
+    .werk-preview-text .section-title{margin-bottom:.8rem}
+    .werk-preview-text p{color:var(--grey);font-size:.92rem;margin-bottom:2rem}
+  </style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="logo_transparant_white.png" alt="Groen Visuals" /></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="werk.html">Werk</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="over.html">Over</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li style="display:none" class="mob-cta"><a href="contact.html" onclick="closeMenu()" style="font-family:var(--font-display);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.8rem;border:1.5px solid var(--green);color:var(--green)">Offerte aanvragen</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Offerte aanvragen</a>
+  <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="shutter-deco"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Videoproductie</p>
+    <h1 class="hero-title">Jouw verhaal.<br><span>Ons beeld.</span></h1>
+    <p class="hero-sub">Van social media content tot commercials en aftermovies vertalen wij jouw visie naar krachtige beelden die blijven hangen.</p>
+    <div class="hero-btns">
+      <a href="werk.html" class="btn-primary">Bekijk ons werk</a>
+      <a href="contact.html" class="btn-outline">Neem contact op</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<section class="content" style="text-align:center;padding:5rem 4rem;background:var(--black)">
+  <p class="section-label">Wat wij doen</p>
+  <h2 class="section-title" style="margin-bottom:1.2rem">Diensten</h2>
+  <div class="divider" style="margin:0 auto 1.6rem"></div>
+  <p style="color:var(--grey);max-width:560px;margin:0 auto 2.5rem;font-size:.95rem;font-family:var(--font-body)">Van social media content tot volledige bedrijfsfilms. Wij maken videoproducties die passen bij jouw merk en doelgroep.</p>
+  <div class="diensten-cta-grid">
+    <a href="diensten.html" class="dienst-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="15" height="10" rx="1"/><path d="M17 9l5-2v10l-5-2V9z"/></svg>Social Media</a>
+    <a href="diensten.html" class="dienst-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg>Commercials</a>
+    <a href="diensten.html" class="dienst-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>Aftermovies</a>
+    <a href="diensten.html" class="dienst-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Bedrijfsfilms</a>
+    <a href="diensten.html" class="dienst-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Maatwerk</a>
+  </div>
+  <a href="diensten.html" class="btn-green-big">Bekijk alle diensten</a>
+</section>
+
+<section class="werk-preview">
+  <p class="section-label" style="text-align:center">Portfolio</p>
+  <h2 class="section-title" style="text-align:center;font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;text-transform:uppercase">Ons werk</h2>
+  <div class="divider" style="margin:0 auto 0"></div>
+  <div class="werk-preview-inner">
+    <div class="werk-preview-img">
+      <img src="img/werk-left.jpg" alt="Werk voorbeeld" />
+    </div>
+    <div class="werk-preview-text">
+      <p>Benieuwd naar wat wij hebben gemaakt? Bekijk ons volledige portfolio.</p>
+      <a href="werk.html" class="btn-primary">Bekijk ons werk</a>
+    </div>
+    <div class="werk-preview-img">
+      <img src="img/werk-right.jpg" alt="Werk voorbeeld 2" />
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo"><img src="logo_transparant_white.png" alt="Groen Visuals" /></a>
+  <p class="footer-center">&copy; Groen Visuals &middot; Opende, Groningen</p>
+  <p class="footer-right">Content Creation</p>
+</footer>
+<div class="footer-bottom">
+  <p>2026 &copy; Groen Visuals. Alle intellectuele eigendomsrechten voorbehouden.</p>
+</div>
+
+<script>
+  const navbar=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>40)});
+  const navLinks=document.getElementById('navLinks');
+  function toggleMenu(){navLinks.classList.toggle('open')}
+  function closeMenu(){navLinks.classList.remove('open')}
+  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>40)});
+</script>
+</body>
+</html>
