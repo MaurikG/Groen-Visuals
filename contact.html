@@ -190,15 +190,15 @@
     </div>
   </div>
 
-  <form class="contact-form fade-up" onsubmit="handleForm(event)">
+  <form class="contact-form fade-up" id="contactForm" onsubmit="handleForm(event)" novalidate>
     <div class="form-row">
-      <div class="form-group"><label>Naam <span style="color:var(--green)">*</span></label><input type="text" placeholder="Uw naam" required /></div>
-      <div class="form-group"><label>E-mail <span style="color:var(--green)">*</span></label><input type="email" placeholder="uw@email.nl" required /></div>
+      <div class="form-group"><label>Naam <span style="color:var(--green)">*</span></label><input type="text" id="fieldNaam" placeholder="Uw naam" required /></div>
+      <div class="form-group"><label>E-mail <span style="color:var(--green)">*</span></label><input type="email" id="fieldEmail" placeholder="uw@email.nl" required /></div>
     </div>
-    <div class="form-group"><label>Telefoon (optioneel)</label><input type="tel" placeholder="06-00000000" /></div>
+    <div class="form-group"><label>Telefoon (optioneel)</label><input type="tel" id="fieldTelefoon" placeholder="06-00000000" /></div>
     <div class="form-group">
-      <label>Type project</label>
-      <select>
+      <label>Type project <span style="color:var(--green)">*</span></label>
+      <select id="fieldType" required>
         <option value="">Selecteer een dienst</option>
         <option>Social Media Content</option>
         <option>Commercial</option>
@@ -207,8 +207,8 @@
         <option>Maatwerk</option>
       </select>
     </div>
-    <div class="form-group"><label>Bericht <span style="color:var(--green)">*</span></label><textarea placeholder="Vertel iets over uw project, tijdlijn en budget..." required></textarea></div>
-    <button type="submit" class="btn-primary">Verstuur bericht</button>
+    <div class="form-group"><label>Bericht <span id="berichtStar" style="color:var(--green);display:none">*</span></label><textarea id="fieldBericht" placeholder="Vertel iets over uw project, tijdlijn en budget..."></textarea></div>
+    <button type="submit" class="btn-primary" id="submitBtn" disabled style="opacity:.5;cursor:not-allowed">Verstuur bericht</button>
   </form>
 </div>
 
@@ -226,13 +226,54 @@
   const navLinks=document.getElementById('navLinks');
   function toggleMenu(){navLinks.classList.toggle('open')}
   function closeMenu(){navLinks.classList.remove('open')}
+
+  // Dynamic form validation: Naam, E-mail en Type project altijd verplicht.
+  // Bericht wordt verplicht zodra "Maatwerk" is gekozen.
+  const fieldNaam = document.getElementById('fieldNaam');
+  const fieldEmail = document.getElementById('fieldEmail');
+  const fieldType = document.getElementById('fieldType');
+  const fieldBericht = document.getElementById('fieldBericht');
+  const berichtStar = document.getElementById('berichtStar');
+  const submitBtn = document.getElementById('submitBtn');
+
+  function updateBerichtRequirement(){
+    const isMaatwerk = fieldType.value === 'Maatwerk';
+    if(isMaatwerk){
+      fieldBericht.setAttribute('required','required');
+      berichtStar.style.display='inline';
+    } else {
+      fieldBericht.removeAttribute('required');
+      berichtStar.style.display='none';
+    }
+    checkFormValid();
+  }
+
+  function checkFormValid(){
+    const naamOk = fieldNaam.value.trim().length>0;
+    const emailOk = fieldEmail.value.trim().length>0 && fieldEmail.checkValidity();
+    const typeOk = fieldType.value.trim().length>0;
+    const berichtOk = fieldType.value!=='Maatwerk' || fieldBericht.value.trim().length>0;
+    const allOk = naamOk && emailOk && typeOk && berichtOk;
+    submitBtn.disabled = !allOk;
+    submitBtn.style.opacity = allOk ? '1' : '.5';
+    submitBtn.style.cursor = allOk ? 'pointer' : 'not-allowed';
+  }
+
+  fieldType.addEventListener('change', updateBerichtRequirement);
+  [fieldNaam, fieldEmail, fieldType, fieldBericht].forEach(el=>{
+    el.addEventListener('input', checkFormValid);
+    el.addEventListener('change', checkFormValid);
+  });
+  checkFormValid();
+
   function handleForm(e){
     e.preventDefault();
-    if(!e.target.checkValidity()){
+    checkFormValid();
+    if(submitBtn.disabled){
       e.target.reportValidity();
       return;
     }
-    const btn=e.target.querySelector('button');
+    const btn=submitBtn;
     btn.textContent='Verstuurd ✓';
     btn.style.background='#054f1c';
     setTimeout(()=>{btn.textContent='Verstuur bericht';btn.style.background=''},3500);
