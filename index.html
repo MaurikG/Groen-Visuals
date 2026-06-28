@@ -24,8 +24,10 @@
     .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101}
     .burger span{display:block;width:24px;height:2px;background:var(--white)}
     #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding:8rem 2rem 5rem}
-    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(6,150,51,.13) 0%,transparent 70%)}
-    .shutter-deco{position:absolute;width:650px;height:650px;border-radius:50%;border:1px solid rgba(6,150,51,.07);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulseRing 7s ease-in-out infinite;pointer-events:none}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    .hero-video-overlay{position:absolute;inset:0;background:rgba(10,10,10,.55);z-index:1}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(6,150,51,.13) 0%,transparent 70%);z-index:1}
+    .shutter-deco{position:absolute;width:650px;height:650px;border-radius:50%;border:1px solid rgba(6,150,51,.07);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulseRing 7s ease-in-out infinite;pointer-events:none;z-index:1}
     .shutter-deco::before{content:'';position:absolute;inset:70px;border-radius:50%;border:1px solid rgba(6,150,51,.05);animation:pulseRing 7s ease-in-out 1.5s infinite}
     @keyframes pulseRing{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.04)}}
     .hero-content{position:relative;z-index:2}
@@ -161,6 +163,10 @@
 </nav>
 
 <section id="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="hero-aftermovie-test.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
   <div class="hero-bg"></div>
   <div class="shutter-deco"></div>
   <div class="hero-content">
