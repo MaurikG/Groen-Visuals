@@ -259,6 +259,10 @@
   function closeMenu(){navLinks.classList.remove('open')}
   function handleForm(e){
     e.preventDefault();
+    if(!e.target.checkValidity()){
+      e.target.reportValidity();
+      return;
+    }
     const btn=e.target.querySelector('button');
     btn.textContent='Verstuurd ✓';
     btn.style.background='#054f1c';
