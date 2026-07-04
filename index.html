@@ -192,7 +192,7 @@
   <div class="hero-scroll">Scroll</div>
 
 </section>
-<div style="line-height:0;position:relative;z-index:10;margin-top:-160px"><svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:160px"><path d="M0,0 L0,0 Q720,160 1440,0 L1440,160 L0,160 Z" fill="#0a0a0a"/></svg></div>
+<div style="line-height:0;position:relative;z-index:10;margin-top:-130px"><svg viewBox="0 0 1440 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:132px"><path d="M0,130 Q720,0 1440,130 L1440,130 L0,130 Z" fill="#0a0a0a"/></svg></div>
 
 <section class="content" style="text-align:center;padding:7rem 4rem 4rem;background:var(--black);">
   <p class="section-label fade-up">Wat ik doe</p>
@@ -258,20 +258,30 @@
 
 <script>
   const navbar=document.getElementById('navbar');
-  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>40)});
   const navLinks=document.getElementById('navLinks');
+  window.addEventListener('scroll',()=>{
+    if(!navLinks.classList.contains('open')){
+      navbar.classList.toggle('scrolled',window.scrollY>40);
+    }
+  });
   function toggleMenu(){
     navLinks.classList.toggle('open');
     if(navLinks.classList.contains('open')){
       document.body.style.overflow='hidden';
-      document.getElementById('navbar').style.background='rgba(10,10,10,0.99)';
+      navbar.style.background='rgba(10,10,10,0.99)';
+      navbar.style.borderBottomColor='transparent';
     } else {
       document.body.style.overflow='';
-      document.getElementById('navbar').style.background='';
+      navbar.style.background='';
+      navbar.style.borderBottomColor='';
     }
   }
-  function closeMenu(){navLinks.classList.remove('open')}
-  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>40)});
+  function closeMenu(){
+    navLinks.classList.remove('open');
+    document.body.style.overflow='';
+    navbar.style.background='';
+    navbar.style.borderBottomColor='';
+  }
 </script>
 <script>
   // Scroll-triggered fade-up animations
