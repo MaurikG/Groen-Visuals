@@ -88,7 +88,7 @@
     .btn-green-big{display:inline-block;font-family:var(--font-display);font-weight:800;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;padding:1rem 3rem;background:var(--green);color:#fff;border-radius:8px;transition:background .2s,transform .15s;border:none;cursor:pointer}
     .btn-green-big:hover{background:#07b33d;transform:translateY(-2px)}
     @media(max-width:900px){
-      nav{padding:1rem 1.5rem}
+      nav{padding:1rem 1.5rem;background:rgba(10,10,10,.98)!important}
       .nav-links,.nav-cta{display:none}
       .burger{display:flex}
       .nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,.99);align-items:center;justify-content:center;gap:2.5rem;font-size:1.1rem;z-index:99999}
@@ -267,14 +267,15 @@
   });
   function toggleMenu(){
     navLinks.classList.toggle('open');
+    const video = document.querySelector('.hero-video');
     if(navLinks.classList.contains('open')){
       document.body.style.overflow='hidden';
       navbar.style.background='rgba(10,10,10,0.99)';
-      navbar.style.borderBottomColor='transparent';
+      if(video) video.style.display='none';
     } else {
       document.body.style.overflow='';
       navbar.style.background='';
-      navbar.style.borderBottomColor='';
+      if(video) video.style.display='';
     }
   }
   function closeMenu(){
@@ -282,6 +283,8 @@
     document.body.style.overflow='';
     navbar.style.background='';
     navbar.style.borderBottomColor='';
+    const video = document.querySelector('.hero-video');
+    if(video) video.style.display='';
   }
 </script>
 <script>
