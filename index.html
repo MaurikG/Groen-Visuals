@@ -100,11 +100,12 @@
       .portfolio-item.wide{grid-column:span 1}
       footer{display:flex;flex-direction:column;align-items:center;text-align:center;padding:2rem 1.5rem;gap:1rem}.footer-logo{text-align:center}.footer-center{text-align:center}.footer-right{text-align:center}.footer-bottom{padding:.9rem 1.5rem}
       .werk-preview{padding:4rem 1.5rem}
-      .werk-preview-inner{display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center}
-      .werk-preview-img{display:block!important;width:100%;border-radius:12px;overflow:hidden}
+      .werk-preview-inner{display:flex!important;flex-direction:column!important;align-items:center;gap:1.5rem;text-align:center}
+      .werk-preview-img{display:block!important;width:100%!important;border-radius:12px;overflow:hidden}
       .werk-preview-img img{height:220px;width:100%;object-fit:cover}
+      .werk-preview-img:first-child{order:1}
+      .werk-preview-text{text-align:center;order:2;width:100%}
       .werk-preview-img:last-child{order:3}
-      .werk-preview-text{text-align:center;order:2}
       .werk-preview-text .btn-primary{display:inline-block;width:auto}
       .werk-preview-text{padding:0}
     }
@@ -168,7 +169,7 @@
     <li><a href="diensten.html">Diensten</a></li>
     <li><a href="over.html">Over</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li style="display:none" class="mob-cta"><a href="contact.html" onclick="closeMenu()" style="font-family:var(--font-display);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.8rem;border:1.5px solid var(--green);color:var(--green)">Offerte aanvragen</a></li>
+
   </ul>
   <a href="contact.html" class="nav-cta">Offerte aanvragen</a>
   <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
