@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diensten &ndash; Groen Visuals</title>
-    <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
@@ -14,14 +13,14 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     ul{list-style:none}
-    nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(10,10,10,.95);border-bottom:1px solid var(--border)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(10,10,10,.95);border-bottom:1px solid var(--border)}
     .nav-logo img{height:44px;background:transparent}
     .nav-links{display:flex;gap:2.5rem;font-family:var(--font-display);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}
     .nav-links a{color:var(--grey);transition:color .2s}
     .nav-links a:hover,.nav-links a.active{color:var(--green)}
     .nav-cta{font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:.55rem 1.5rem;border:1.5px solid var(--green);color:var(--green);transition:background .2s,color .2s;border-radius:6px}
     .nav-cta:hover{background:var(--green);color:#fff}
-    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:9999}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101}
     .burger span{display:block;width:24px;height:2px;background:var(--white)}
     .page-header{padding:9rem 4rem 3.5rem;background:var(--dark);border-bottom:1px solid var(--border)}
     .section-label{font-family:var(--font-display);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
@@ -30,14 +29,14 @@
     .diensten-section{padding:6.5rem 4rem}
     .diensten-section > p{color:var(--grey);font-size:.95rem;max-width:580px;margin-bottom:3rem}
     .diensten-full{display:flex;flex-direction:column;gap:1.5rem;border:none}
-    .dienst-full{display:grid;grid-template-columns:260px 1fr;border:1px solid var(--border);border-radius:10px;transition:background .25s,transform .3s;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit}
+    .dienst-full{display:grid;grid-template-columns:260px 1fr;border:1px solid var(--border);border-radius:10px;transition:background .25s,transform .3s;position:relative;overflow:hidden}
     .dienst-full:last-child{border-bottom:none}
     .dienst-full:hover{background:var(--card);transform:translateY(-4px)}
     .dienst-full::after{content:"";position:absolute;left:0;top:0;width:3px;height:0;background:var(--green);transition:height .35s;z-index:2}
     .dienst-full:hover::after{height:100%}
     .dienst-img{width:260px;min-height:220px;overflow:hidden;flex-shrink:0}
-    .dienst-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(1.1);transition:transform .4s,filter .4s}
-    .dienst-full:hover .dienst-img img{transform:scale(1.04);filter:brightness(1.2)}
+    .dienst-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8);transition:transform .4s,filter .4s}
+    .dienst-full:hover .dienst-img img{transform:scale(1.04);filter:brightness(.95)}
     .dienst-body{padding:3rem}
     .dienst-body h2{font-family:var(--font-display);font-size:1.4rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.7rem}
     .dienst-body p{color:var(--grey);font-size:.92rem;line-height:1.8;max-width:640px}
@@ -48,7 +47,7 @@
     .cta-banner p{color:var(--grey);max-width:480px;margin:0 auto 2rem;font-size:.95rem}
     .btn-primary{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;background:var(--green);color:#fff;border:none;cursor:pointer;transition:background .2s,transform .15s;border-radius:6px}
     .btn-primary:hover{background:#07b33d;transform:translateY(-2px)}
-    footer{background:var(--dark);border-top:1px solid var(--border);display:flex;flex-direction:column;align-items:center;text-align:center;padding:2.5rem 2rem;gap:0.8rem}
+    footer{background:var(--dark);border-top:1px solid var(--border);padding:2.2rem 4rem;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:1rem}
     .footer-logo img{height:40px;background:transparent}
     .footer-center{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em;text-align:center}
     .footer-right{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em;text-align:right}
@@ -58,14 +57,14 @@
       nav{padding:1rem 1.5rem}
       .nav-links,.nav-cta{display:none}
       .burger{display:flex}
-      .nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0a0a;align-items:center;justify-content:center;gap:2.5rem;font-size:1.1rem;z-index:99999}
+      .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,10,10,.98);align-items:center;justify-content:center;gap:2.5rem;font-size:1.1rem;z-index:100}
       .page-header{padding:7rem 1.5rem 3rem}
       .diensten-section{padding:3.5rem 1.5rem}
       .dienst-full{grid-template-columns:1fr}
       .dienst-img{width:100%;min-height:180px}
       .dienst-body{padding:2rem 1.5rem}
       .cta-banner{padding:4rem 1.5rem}
-      footer{display:flex;flex-direction:column;align-items:center;text-align:center;padding:2rem 1.5rem;gap:1rem}.footer-logo{text-align:center}.footer-center{text-align:center}.footer-right{text-align:center}.footer-bottom{padding:.9rem 1.5rem}
+      footer{grid-template-columns:1fr;text-align:left}
       .footer-center{text-align:left}
       .footer-right{text-align:left}
       .footer-bottom{padding:.9rem 1.5rem}
@@ -99,14 +98,6 @@
 
     /* ── FOOTER EXPANDED ── */
 
-
-    @media(max-width:900px){
-      footer{display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;padding:2rem 1.5rem!important;gap:0.8rem!important}
-      footer .footer-logo{text-align:center!important}
-      footer .footer-logo img{margin:0 auto!important}
-      footer .footer-center{text-align:center!important}
-      footer .footer-right{text-align:center!important}
-    }
   </style>
 </head>
 <body>
@@ -133,50 +124,50 @@
   <p>Hieronder vindt u alles wat ik voor u kan doen.</p>
   <div class="diensten-full">
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up">
       <div class="dienst-img"><img src="social-media.jpg" alt="Social Media Content" /></div>
       <div class="dienst-body">
         <h2>Social Media Content</h2>
         <p>Korte en pakkende video's specifiek gemaakt voor Instagram, LinkedIn, TikTok, YouTube en andere platformen. Elke video wordt geoptimaliseerd voor het algoritme en uw doelgroep, met de juiste formats, muziek en editing stijl.</p>
         <div class="dienst-tags"><span class="dienst-tag">Reels</span><span class="dienst-tag">TikTok</span><span class="dienst-tag">LinkedIn</span><span class="dienst-tag">YouTube Shorts</span><span class="dienst-tag">Stories</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up">
       <div class="dienst-img"><img src="commercials.jpg" alt="Commercials" /></div>
       <div class="dienst-body">
         <h2>Commercials</h2>
         <p>Professionele reclamefilms die uw product of dienst op de juiste manier in de spotlight zetten. Van concept en script tot eindproduct wordt alles in nauw overleg met u uitgewerkt, zodat de film precies past bij uw merk.</p>
         <div class="dienst-tags"><span class="dienst-tag">TV-commercial</span><span class="dienst-tag">Online advertentie</span><span class="dienst-tag">Productfilm</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up">
       <div class="dienst-img"><img src="aftermovie.jpg" alt="Evenementen en Aftermovies" /></div>
       <div class="dienst-body">
         <h2>Evenementen &amp; Aftermovies</h2>
         <p>Of het nu gaat om een zakelijk evenement, festival of sporttoernooi, iedere bijzondere dag verdient een meeslepende aftermovie. Met meerdere camera's en een scherp gevoel voor sfeer leg ik de essentie van uw evenement vast.</p>
         <div class="dienst-tags"><span class="dienst-tag">Festivals</span><span class="dienst-tag">Bedrijfsevenementen</span><span class="dienst-tag">Sport</span><span class="dienst-tag">Priv&eacute; evenementen</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up">
       <div class="dienst-img"><img src="bedrijfsfilm.jpg" alt="Bedrijfsfilms" /></div>
       <div class="dienst-body">
         <h2>Bedrijfsfilms</h2>
         <p>Introduceer uw bedrijf, team of werkwijze met een strak en professioneel productiepakket. Ideaal voor uw website, LinkedIn of presentaties. Een goede bedrijfsfilm geeft vertrouwen en maakt direct duidelijk wie u bent.</p>
         <div class="dienst-tags"><span class="dienst-tag">Introductiefilm</span><span class="dienst-tag">Productfilm</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up">
       <div class="dienst-img"><img src="maatwerk.jpg" alt="Maatwerk" /></div>
       <div class="dienst-body">
         <h2>Maatwerk</h2>
         <p>Heeft u iets speciaals nodig dat hier niet tussen staat? Neem vrijblijvend contact op. Of het nu gaat om droneopnames of iets heel anders, ik denk graag met u mee.</p>
         <div class="dienst-tags"><span class="dienst-tag">Droneopnames</span><span class="dienst-tag">Op aanvraag</span></div>
       </div>
-    </a>
+    </div>
 
   </div>
 </section>
@@ -187,10 +178,10 @@
   <a href="contact.html" class="btn-primary">Offerte aanvragen</a>
 </div>
 
-<footer style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:2.5rem 2rem;gap:0.8rem;background:var(--dark);border-top:1px solid var(--border)">
-  <a href="index.html" class="footer-logo"><img src="logo_transparant_white.png" alt="Groen Visuals" style="height:40px;margin:0 auto" /></a>
-  <p style="font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em">&copy; Groen Visuals &middot; Opende, Groningen</p>
-  <p style="font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em">Content Creation</p>
+<footer>
+  <a href="index.html" class="footer-logo"><img src="logo_transparant_white.png" alt="Groen Visuals" /></a>
+  <p class="footer-center">&copy; Groen Visuals &middot; Groningen</p>
+  <p class="footer-right">Content Creation</p>
 </footer>
 <div class="footer-bottom">
   <p>2026 &copy; Groen Visuals. Alle intellectuele eigendomsrechten voorbehouden.</p>
