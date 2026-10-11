@@ -29,7 +29,8 @@
     .diensten-section{padding:6.5rem 4rem}
     .diensten-section > p{color:var(--grey);font-size:.95rem;max-width:580px;margin-bottom:3rem}
     .diensten-full{display:flex;flex-direction:column;gap:1.5rem;border:none}
-    .dienst-full{display:grid;grid-template-columns:260px 1fr;border:1px solid var(--border);border-radius:10px;transition:background .25s,transform .3s;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit}
+    .dienst-full{display:grid;grid-template-columns:260px 1fr;border:1px solid var(--border);border-radius:10px;transition:background .25s,transform .3s;position:relative;overflow:hidden}
+    .dienst-link-overlay{position:absolute;inset:0;z-index:1}
     .dienst-full:last-child{border-bottom:none}
     .dienst-full:hover{background:var(--card);transform:translateY(-4px)}
     .dienst-full::after{content:"";position:absolute;left:0;top:0;width:3px;height:0;background:var(--green);transition:height .35s;z-index:2}
@@ -124,49 +125,49 @@
   <p>Hieronder vindt u alles wat ik voor u kan doen.</p>
   <div class="diensten-full">
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up"><a href="contact.html" class="dienst-link-overlay" aria-label="Neem contact op"></a>
       <div class="dienst-img"><img src="social-media.jpg" alt="Social Media Content" /></div>
       <div class="dienst-body">
         <h2>Social Media Content</h2>
         <p>Korte en pakkende video's specifiek gemaakt voor Instagram, LinkedIn, TikTok, YouTube en andere platformen. Elke video wordt geoptimaliseerd voor het algoritme en uw doelgroep, met de juiste formats, muziek en editing stijl.</p>
         <div class="dienst-tags"><span class="dienst-tag">Reels</span><span class="dienst-tag">TikTok</span><span class="dienst-tag">LinkedIn</span><span class="dienst-tag">YouTube Shorts</span><span class="dienst-tag">Stories</span></div>
-      </a>
+      </div>
     </div>
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up"><a href="contact.html" class="dienst-link-overlay" aria-label="Neem contact op"></a>
       <div class="dienst-img"><img src="commercials.jpg" alt="Commercials" /></div>
       <div class="dienst-body">
         <h2>Commercials</h2>
         <p>Professionele reclamefilms die uw product of dienst op de juiste manier in de spotlight zetten. Van concept en script tot eindproduct wordt alles in nauw overleg met u uitgewerkt, zodat de film precies past bij uw merk.</p>
         <div class="dienst-tags"><span class="dienst-tag">TV-commercial</span><span class="dienst-tag">Online advertentie</span><span class="dienst-tag">Productfilm</span></div>
-      </a>
+      </div>
     </div>
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up"><a href="contact.html" class="dienst-link-overlay" aria-label="Neem contact op"></a>
       <div class="dienst-img"><img src="aftermovie.jpg" alt="Evenementen en Aftermovies" /></div>
       <div class="dienst-body">
         <h2>Evenementen &amp; Aftermovies</h2>
         <p>Of het nu gaat om een zakelijk evenement, festival of sporttoernooi, iedere bijzondere dag verdient een meeslepende aftermovie. Met meerdere camera's en een scherp gevoel voor sfeer leg ik de essentie van uw evenement vast.</p>
         <div class="dienst-tags"><span class="dienst-tag">Festivals</span><span class="dienst-tag">Bedrijfsevenementen</span><span class="dienst-tag">Sport</span><span class="dienst-tag">Priv&eacute; evenementen</span></div>
-      </a>
+      </div>
     </div>
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up"><a href="contact.html" class="dienst-link-overlay" aria-label="Neem contact op"></a>
       <div class="dienst-img"><img src="bedrijfsfilm.jpg" alt="Bedrijfsfilms" /></div>
       <div class="dienst-body">
         <h2>Bedrijfsfilms</h2>
         <p>Introduceer uw bedrijf, team of werkwijze met een strak en professioneel productiepakket. Ideaal voor uw website, LinkedIn of presentaties. Een goede bedrijfsfilm geeft vertrouwen en maakt direct duidelijk wie u bent.</p>
         <div class="dienst-tags"><span class="dienst-tag">Introductiefilm</span><span class="dienst-tag">Productfilm</span></div>
-      </a>
+      </div>
     </div>
 
-    <a href="contact.html" class="dienst-full fade-up">
+    <div class="dienst-full fade-up"><a href="contact.html" class="dienst-link-overlay" aria-label="Neem contact op"></a>
       <div class="dienst-img"><img src="maatwerk.jpg" alt="Maatwerk" /></div>
       <div class="dienst-body">
         <h2>Maatwerk</h2>
         <p>Heeft u iets speciaals nodig dat hier niet tussen staat? Neem vrijblijvend contact op. Of het nu gaat om droneopnames of iets heel anders, ik denk graag met u mee.</p>
         <div class="dienst-tags"><span class="dienst-tag">Droneopnames</span><span class="dienst-tag">Op aanvraag</span></div>
-      </a>
+      </div>
     </div>
 
   </div>
