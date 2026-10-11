@@ -44,7 +44,7 @@
     .nav-cta:hover{background:var(--green);color:#fff}
     .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:101}
     .burger span{display:block;width:24px;height:2px;background:var(--white)}
-    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding:8rem 2rem 8rem;border-radius:0 0 50% 50%/0 0 120px 120px;box-shadow:0 40px 80px -20px rgba(0,0,0,.9)}
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding:8rem 2rem 8rem}
     .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(6,150,51,.13) 0%,transparent 70%)}
     .shutter-deco{position:absolute;width:650px;height:650px;border-radius:50%;border:1px solid rgba(6,150,51,.07);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulseRing 7s ease-in-out infinite;pointer-events:none}
     .shutter-deco::before{content:'';position:absolute;inset:70px;border-radius:50%;border:1px solid rgba(6,150,51,.05);animation:pulseRing 7s ease-in-out 1.5s infinite}
@@ -197,9 +197,14 @@
     </div>
   </div>
   <div class="hero-scroll">Scroll</div>
+  <div style="position:absolute;bottom:-1px;left:0;width:100%;z-index:3;line-height:0">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:80px">
+      <path d="M0,0 Q720,80 1440,0 L1440,80 L0,80 Z" fill="#111111"/>
+    </svg>
+  </div>
 </section>
 
-<section class="content" style="text-align:center;padding:7rem 4rem;background:var(--black)">
+<section class="content" style="text-align:center;padding:7rem 4rem;background:var(--dark)">
   <p class="section-label fade-up">Wat ik doe</p>
   <h2 class="section-title fade-up" style="margin-bottom:1.2rem">Diensten</h2>
   <div class="divider" style="margin:0 auto 1.6rem"></div>
