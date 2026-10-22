@@ -55,7 +55,6 @@
       nav{padding:1rem 1.5rem}
       .nav-links,.nav-cta{display:none}
       .burger{display:flex}
-      .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,10,10,.98);align-items:center;justify-content:center;gap:2.5rem;font-size:1.1rem;z-index:100}
       .page-header{padding:7rem 1.5rem 3rem}
       .over-section{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem}
       .mv-section{padding:0 1.5rem 4rem}
@@ -108,9 +107,9 @@
   </style>
 </head>
 <body>
-<nav>
+<nav id="navbar">
   <a href="index.html" class="nav-logo"><img src="logo_transparant_white.png" alt="Groen Visuals" /></a>
-  <ul class="nav-links" id="navLinks">
+  <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="werk.html">Werk</a></li>
     <li><a href="diensten.html">Diensten</a></li>
@@ -120,6 +119,14 @@
   <a href="contact.html" class="nav-cta">Offerte aanvragen</a>
   <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
+<div id="mob-menu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="werk.html" onclick="closeMenu()">Werk</a>
+  <a href="diensten.html" onclick="closeMenu()">Diensten</a>
+  <a href="over.html" onclick="closeMenu()">Over</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a href="contact.html" class="mob-cta-btn" onclick="closeMenu()">Offerte aanvragen</a>
+</div>
 
 <div class="page-header">
   <h1 class="fade-up">Over mij</h1>
@@ -181,9 +188,11 @@
 </div>
 
 <script>
-  const navLinks=document.getElementById('navLinks');
-  function toggleMenu(){navLinks.classList.toggle('open')}
-  function closeMenu(){navLinks.classList.remove('open')}
+  const navbar=document.getElementById('navbar');
+  const mobMenu=document.getElementById('mob-menu');
+  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>40)});
+  function toggleMenu(){mobMenu.classList.toggle('open')}
+  function closeMenu(){mobMenu.classList.remove('open')}
 </script>
 <script>
   // Scroll-triggered fade-up animations

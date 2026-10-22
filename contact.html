@@ -58,7 +58,6 @@
       nav{padding:1rem 1.5rem}
       .nav-links,.nav-cta{display:none}
       .burger{display:flex}
-      .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,10,10,.98);align-items:center;justify-content:center;gap:2.5rem;font-size:1.1rem;z-index:200}
       .page-header{padding:7rem 1.5rem 3rem}
       .contact-section{grid-template-columns:1fr;gap:3rem;padding:3.5rem 1.5rem}
       .form-row{grid-template-columns:1fr}
@@ -73,6 +72,12 @@
 
     .contact-img{width:100%;height:340px;overflow:hidden;border:1px solid var(--border);margin-top:2rem}
     .contact-img img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.8)}
+    /* Mobiel menu los van nav */
+    #mob-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,.98);z-index:99999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+    #mob-menu.open{display:flex}
+    #mob-menu a{font-family:var(--font-display);font-weight:600;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white);transition:color .2s}
+    #mob-menu a:hover{color:var(--green)}
+    #mob-menu .mob-cta-btn{padding:.6rem 1.8rem;border:1.5px solid var(--green);color:var(--green)!important}
     @media(max-width:900px){.contact-img{height:220px}.contact-img img{object-fit:cover;object-position:center}}
     /* ── SCROLL ANIMATIONS ── */
     .fade-up{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
@@ -124,7 +129,7 @@
 <body>
 <nav id="navbar">
   <a href="index.html" class="nav-logo"><img src="logo_transparant_white.png" alt="Groen Visuals" /></a>
-  <ul class="nav-links" id="navLinks">
+  <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="werk.html">Werk</a></li>
     <li><a href="diensten.html">Diensten</a></li>
@@ -134,6 +139,14 @@
   <a href="contact.html" class="nav-cta">Offerte aanvragen</a>
   <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
+<div id="mob-menu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="werk.html" onclick="closeMenu()">Werk</a>
+  <a href="diensten.html" onclick="closeMenu()">Diensten</a>
+  <a href="over.html" onclick="closeMenu()">Over</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a href="contact.html" class="mob-cta-btn" onclick="closeMenu()">Offerte aanvragen</a>
+</div>
 
 <div class="page-header">
   <p class="section-label">Samenwerken?</p>
@@ -229,10 +242,13 @@
 
 
 <script>
-  const navLinks=document.getElementById('navLinks');
-  function toggleMenu(){navLinks.classList.toggle('open')}
-  function closeMenu(){navLinks.classList.remove('open')}
-
+  const navbar=document.getElementById('navbar');
+  const mobMenu=document.getElementById('mob-menu');
+  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>40)});
+  function toggleMenu(){mobMenu.classList.toggle('open')}
+  function closeMenu(){mobMenu.classList.remove('open')}
+</script>
+<script>
   // Dynamic form validation: Naam, E-mail en Type project altijd verplicht.
   // Bericht wordt verplicht zodra "Maatwerk" is gekozen.
   const fieldNaam = document.getElementById('fieldNaam');
