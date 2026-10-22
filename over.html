@@ -51,6 +51,11 @@
     .footer-right{font-size:.75rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.08em;text-align:right}
     .footer-bottom{background:var(--dark);border-top:1px solid var(--border);padding:.9rem 4rem;text-align:center}
     .footer-bottom p{font-size:.7rem;color:var(--grey);font-family:var(--font-display);letter-spacing:.06em}
+    #mob-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,.98);z-index:99999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+    #mob-menu.open{display:flex}
+    #mob-menu a{font-family:var(--font-display);font-weight:600;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white);transition:color .2s}
+    #mob-menu a:hover{color:var(--green)}
+    #mob-menu .mob-cta-btn{padding:.6rem 1.8rem;border:1.5px solid var(--green);color:var(--green)!important}
 @media(max-width:900px){
       nav{padding:1rem 1.5rem}
       .nav-links,.nav-cta{display:none}
