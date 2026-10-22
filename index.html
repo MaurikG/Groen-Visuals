@@ -102,12 +102,16 @@
     .dienst-pill svg{color:var(--green)}
     .btn-green-big{display:inline-block;font-family:var(--font-display);font-weight:800;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;padding:1rem 3rem;background:var(--green);color:#fff;border-radius:8px;transition:background .2s,transform .15s;border:none;cursor:pointer}
     .btn-green-big:hover{background:#07b33d;transform:translateY(-2px)}
+    /* Mobiel menu los van nav — geen stacking context probleem */
+    #mob-menu{display:none;position:fixed;inset:0;background:rgba(10,10,10,.98);z-index:99999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+    #mob-menu.open{display:flex}
+    #mob-menu a{font-family:var(--font-display);font-weight:600;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white);transition:color .2s}
+    #mob-menu a:hover{color:var(--green)}
+    #mob-menu .mob-cta-btn{padding:.6rem 1.8rem;border:1.5px solid var(--green);color:var(--green)!important}
     @media(max-width:900px){
       nav{padding:1rem 1.5rem}
       .nav-links,.nav-cta{display:none}
       .burger{display:flex}
-      .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(10,10,10,.98);align-items:center;justify-content:center;gap:2.5rem;font-size:1.1rem;z-index:9999}
-      .mob-cta{display:block!important}
       .intro-strip{grid-template-columns:1fr;padding:2.5rem 1.5rem}
       section.content{padding:4rem 1.5rem}
       .diensten-grid{grid-template-columns:1fr}
@@ -178,17 +182,24 @@
 <body>
 <nav id="navbar">
   <a href="index.html" class="nav-logo"><img src="logo_transparant_white.png" alt="Groen Visuals" /></a>
-  <ul class="nav-links" id="navLinks">
+  <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="werk.html">Werk</a></li>
     <li><a href="diensten.html">Diensten</a></li>
     <li><a href="over.html">Over</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li style="display:none" class="mob-cta"><a href="contact.html" onclick="closeMenu()" style="font-family:var(--font-display);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.8rem;border:1.5px solid var(--green);color:var(--green)">Offerte aanvragen</a></li>
   </ul>
   <a href="contact.html" class="nav-cta">Offerte aanvragen</a>
   <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
+<div id="mob-menu">
+  <a href="index.html">Home</a>
+  <a href="werk.html">Werk</a>
+  <a href="diensten.html">Diensten</a>
+  <a href="over.html">Over</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="mob-cta-btn" onclick="closeMenu()">Offerte aanvragen</a>
+</div>
 
 <section id="hero">
   <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:.45">
@@ -278,11 +289,10 @@
 
 <script>
   const navbar=document.getElementById('navbar');
+  const mobMenu=document.getElementById('mob-menu');
   window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>40)});
-  const navLinks=document.getElementById('navLinks');
-  function toggleMenu(){navLinks.classList.toggle('open')}
-  function closeMenu(){navLinks.classList.remove('open')}
-  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>40)});
+  function toggleMenu(){mobMenu.classList.toggle('open')}
+  function closeMenu(){mobMenu.classList.remove('open')}
 </script>
 <script>
   // Scroll-triggered fade-up animations
